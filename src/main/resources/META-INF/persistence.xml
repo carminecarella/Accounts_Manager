@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0"
+   xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<!-- If you are running in a production environment, add a managed 
+         data source, this example data source is just for development and testing! -->
+	<!-- The datasource is deployed as WEB-INF/kitchensink-quickstart-ds.xml, you
+         can find it in the source at src/main/webapp/WEB-INF/kitchensink-quickstart-ds.xml -->
+	<!--persistence-unit name="primary">           
+      <jta-data-source>java:jboss/datasources/KitchensinkQuickstartDS</jta-data-source>
+      <properties>
+    
+         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+         <property name="hibernate.show_sql" value="false" />
+      </properties>
+   </persistence-unit>-->
+   
+   <persistence-unit name="accountsmanagerconnection">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>		
+		<!-- jta-data-source>java:/MySqlDS</jta-data-source-->
+		<jta-data-source>java:/jdbc/AccountsManagerDS</jta-data-source>
+		<!-- class>com.youspot.domain.User</class>
+		<class>com.youspot.domain.Preference</class-->
+	     <!-- Properties for Hibernate -->
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />			
+			<property name="hibernate.show_sql" value="true" />			
+			<!-- property name="hibernate.transaction.factory_class" value="org.hibernate.ejb.transaction.JoinableCMTTransactionFactory" />
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+			<property name="hibernate.session_factory_name" value="hibernateSessionFactory" /-->
+		</properties>
+	</persistence-unit>
+</persistence>
