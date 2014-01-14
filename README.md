@@ -1,4 +1,4 @@
-Accounts_Manager
+Accounts Manager
 ================
 
 Accounts Manager: sample application to manage Internet accounts (username, password, etc.) like facebook, twitter and other internet services (this is a sample app to try new technologies, for this reason security topics aren't taken into account)
