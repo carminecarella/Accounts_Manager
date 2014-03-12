@@ -5,7 +5,9 @@ Accounts Manager: sample application to manage Internet accounts (username, pass
 
 It is a sample CRUD web application built up with Twitter Bootstrap, Backbone JS, REST services and J2EE backend.
 
-You can also run a hosted version of the application on my OpenShift http://accountsmanager-ccarella.rhcloud.com
+You can also run a hosted version of the application on my OpenShift 
+
+http://accountsmanager-ccarella.rhcloud.com
 
 Technologies/Stack
 
