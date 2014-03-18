@@ -38,8 +38,6 @@
 
 <div class="header"></div>
 
-<div class="header"></div>
-
 <div id="headerView"></div>
 
 <div class="wrapper">
@@ -50,13 +48,29 @@
 
 <div class="footer"></div>
 
+<div class="modal fade" id="loadingModal">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+			<div class="modal-body">
+				<img src="./resources/img/ajax-loader_white.gif"/>
+				<span>  Attendere...</span>
+			</div>
+		</div>
+	</div>	
+</div>
+
 <!-- Placed at the end of the document so the pages load faster -->    
-<script src="lib/jquery-1.7.2.min.js"></script>
+
+<!-- script src="lib/jquery-1.7.2.min.js"></script-->
+<script src="lib/jquery-1.9.1.js"></script>
+
 <script src="lib/underscore-min.js"></script>
+
 <script src="lib/backbone-min.js"></script>
+
 <script src="lib/bootstrap.min.js"></script>
 
-<script src="lib/holder.js"></script>
+<!--script src="lib/holder.js"></script-->
 
 <!--  plugin sources -->
 <script src="plugin/transition.js"></script>
@@ -72,7 +86,7 @@
 <script src="plugin/popover.js"></script>
 <script src="plugin/affix.js"></script>
 
-<!-- JAVASCRIPT YOUSPOT -->
+<!-- JAVASCRIPT  -->
 <script src="js/utils.js"></script>
 
 <script src="js/models/model.js"></script>
@@ -85,10 +99,9 @@
 <script src="js/views/list.js"></script>
 <script src="js/views/details.js"></script>
 
-<!--script src="js/views/contact.js"></script>
-<script src="js/views/employeedetails.js"></script-->
-
 <script src="js/main.js"></script>
+
+<script src="js/common.js"></script>
 
 </body>
 </html>

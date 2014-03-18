@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class BaseService {
 	
-	@PersistenceContext(unitName = "accountsmanagerconnection")
+	@PersistenceContext(unitName = "primary")
 	private EntityManager entityManager;
 	
 	public EntityManager getEntityManager(){

@@ -1,7 +1,11 @@
 package com.accountsmanager.api;
 
 import java.util.List;
+
 import javax.ejb.Local;
+import javax.ws.rs.core.Response;
+
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import com.accountsmanager.model.Account;
 
@@ -14,12 +18,9 @@ import com.accountsmanager.model.Account;
 @Local
 public interface IAccount {
 
-	/**
-	 * Returns list
-	 * 
-	 * @return list
-	 */	
 	List<Account> getAccountList();
+	
+	List<Account> findByName(String name);
 	
 	Account getAccount(String id);
 		
@@ -30,5 +31,7 @@ public interface IAccount {
 	void delete(int id);
 	
 	Integer getAccountNumber();
+	
+	//Response uploadFile(MultipartFormDataInput input);
 
 }

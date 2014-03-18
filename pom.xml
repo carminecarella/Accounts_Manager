@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
 
-   <groupId>org.jboss.as.quickstarts</groupId>
-   <artifactId>jboss-as-kitchensink</artifactId>
+   <groupId>com.carminecarella</groupId>
+   <artifactId>accounts-manager</artifactId>
    <version>7.1.1-SNAPSHOT</version>
    <packaging>war</packaging>
-   <name>JBoss AS Quickstarts: kitchensink</name>
-   <description>A starter Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the jboss-javaee6-webapp archetype</description>
+   <name>Accounts Manager </name>
+   <description>A sample application to manage your internet account information (username, psw, etc.)</description>
 
    <properties>
       <!-- Explicitly declaring the source encoding eliminates the following 
@@ -144,6 +144,27 @@
          <artifactId>arquillian-protocol-servlet</artifactId>
          <scope>test</scope>               
       </dependency>
+      
+      <dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jaxrs</artifactId>
+		<version>2.2.1.GA</version>
+		<scope>provided</scope>
+	  </dependency>
+ 	  
+ 	  <dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-multipart-provider</artifactId>
+		<version>2.2.0.GA</version>
+		<scope>provided</scope>
+	  </dependency>
+ 
+	  <!-- optional, good for handle I/O task -->
+	  <dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.0.1</version>
+	  </dependency>
 
    </dependencies>
 

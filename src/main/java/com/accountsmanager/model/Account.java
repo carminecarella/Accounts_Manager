@@ -39,6 +39,9 @@ public class Account implements Serializable {
 	
 	@Column (name = "MODIFY_DATE")
 	private Date modifyDate;
+	
+	@Column (name = "PICTURE")
+	private String picture;
 
 	public Integer getId() {
 		return id;
@@ -78,6 +81,14 @@ public class Account implements Serializable {
 
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+	
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	@Override

@@ -1,4 +1,8 @@
-<a href='#account/<%= id %>'>    
+<a href='#account/<%= id %>'>
+		
+	<img width="32" height="32"  
+		src="<%= picture === '-1' ? './resources/img/user_account_small.png' : 'rest/accounts/picture/' + picture %>"/>
+	    
     <p><%= name %></p>
 </a>
 

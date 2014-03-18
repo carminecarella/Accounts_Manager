@@ -33,25 +33,31 @@ window.Router = Backbone.Router.extend({
     },
     
     accountsList: function(page) {
-        var p = page ? parseInt(page, 10) : 1;
+    	//$('#loadingModal').modal('show');
+    	$('#loadingimage').show();
+    	var p = page ? parseInt(page, 10) : 1;
         var accountsList = new AccountsCollection();
         accountsList.fetch({success: function(){
             $("#content").html(new ListView({model: accountsList, page: p}).el);
+            //$('#loadingModal').modal('hide');
+            $('#loadingimage').hide();
         }});
-        this.headerView.select('accounts-menu');
+        this.headerView.select('accounts-menu');        
     },
     
     accountDetails: function (id) {
         var account = new Account({id: id});
         account.fetch({success: function(){
             $("#content").html(new DetailsView({model: account}).el);
-        }});
+        }});        
 //        this.headerView.selectMenuItem();
     },
     
     addAccount: function() {
         var account = new Account();
         $('#content').html(new DetailsView({model: account}).el);
+        //$('#deleteAccountButton').prop('disabled', true);
+        $('#deleteAccountButton').hide();  
         this.headerView.select('add-menu');
 	},
     

@@ -1,9 +1,9 @@
 window.FooterView = Backbone.View.extend({
 
     initialize: function () {
-    	$("#mypop").popover({
- 	        placement : 'left'
-     	});	
+//    	$("#mypop").popover({
+// 	        placement : 'top'
+//     	});	
     },
     
     events:{        

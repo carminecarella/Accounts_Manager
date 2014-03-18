@@ -1,4 +1,3 @@
-//prende in input la collection e page iniziale
 window.ListView = Backbone.View.extend({
 
     initialize: function () {
@@ -49,18 +48,23 @@ window.SearchResultView = Backbone.View.extend({
 	 initialize:function () {
 	    var self = this;
 	    this.model.bind("reset", this.render, this);
-	    this.model.bind("add", function (employee) {
-	        $(self.el).append(new EmployeeListItemView({model:employee}).render().el);
+	    this.model.bind("add", function (account) {
+	        $(self.el).append(new SearchResultItemView({model:account}).render().el);
 	    });
 	 },
 
-    render:function () {
-        $(this.el).empty();
-        _.each(this.model.models, function (employee) {
-            $(this.el).append(new SearchResultItemView({model:employee}).render().el);
-        }, this);
+     render:function () {
+        $(this.el).empty();  
+        if(this.model.size() > 0){
+	        _.each(this.model.models, function (account) {        	        	
+	        	$(this.el).append(new SearchResultItemView({model:account}).render().el);        	
+	        }, this);
+        } else {
+        	$(this.el).append('<li class="elementSearchResult disabled"><a href="#"><div class="row"><div class="col-md-6"><img src="./resources/img/no_result.png" alt=""></div><div class="col-md-6" style="padding-top:5px">No result</div></div></a></li>');
+        } 
+        	
         return this;
-    }
+     }
 });
 
 window.SearchResultItemView = Backbone.View.extend({

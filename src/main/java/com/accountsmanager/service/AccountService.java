@@ -1,15 +1,18 @@
 package com.accountsmanager.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
+
 import com.accountsmanager.api.IAccount;
 import com.accountsmanager.model.Account;
 
@@ -32,6 +35,31 @@ public class AccountService extends BaseService implements IAccount {
 		cq.orderBy(order);
 		TypedQuery<Account> q = getEntityManager().createQuery(cq);
 		List<Account> allAccounts = q.getResultList();
+		
+		return allAccounts;
+	}
+	
+	@Override
+	public List<Account> findByName(String name) {
+		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<Account> cq = cb.createQuery(Account.class);		
+		Root<Account> pet = cq.from(Account.class);
+		cq.select(pet);
+		Order order = cb.asc(pet.get("name"));
+		cq.orderBy(order);
+		TypedQuery<Account> q = getEntityManager().createQuery(cq);
+				
+		List<Account> allAccounts = new ArrayList<Account>(); 
+		
+		for(Account a: q.getResultList()){
+			
+			String s1 = a.getName().toLowerCase(); 
+			String s2 = name.toLowerCase();
+			
+			if(s1.startsWith(s2)){
+				allAccounts.add(a);
+			}
+		}
 		
 		return allAccounts;
 	}

@@ -1,68 +1,123 @@
 <div class="page-header">
   <h1>Account Details</h1>
+  
+  <!-- ALERT FOR MESSAGING -->
+  <div class="alert alert-success" style="display: none">  		
+  		<b>Success!</b>
+  </div>
+  
 </div>
 
-<form class="form-horizontal">
+<div class="row">
 
-	<div class="form-group">
-    	<label for="id" class="col-lg-2 control-label">ID</label>
-    	<div class="col-lg-10">
-      		<div class="input-group">
-			  <span class="input-group-addon">@</span>						  
-			  <input id="accountId" name="id" type="text" class="form-control" value="<%= id === null ? '' : id %>" disabled/>			  
-			</div>      		
-    	</div>
-  	</div>
-  	
-  	<!-- NAME -->
-  	<div class="form-group">
-    	<label for="name" class="col-lg-2 control-label">Name</label>
-    	<div class="col-lg-10">
-      		<div class="input-group">
-			  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
-			  <input name="name" type="text" class="form-control" value="<%= name %>"/>			  
-			</div>      		
-    	</div>
-  	</div>
-  	
-  	<!-- USERNAME -->
-  	<div class="form-group">
-    	<label for="username" class="col-lg-2 control-label">Username</label>
-    	<div class="col-lg-10">
-      		<div class="input-group">
-			  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
-			  <input name="username" type="text" class="form-control" value="<%= username %>"/>			  
-			</div>      		
-    	</div>
-  	</div>
-  	
-  	<!-- PASSWORD -->
-  	<div class="form-group">
-    	<label for="password" class="col-lg-2 control-label">Password</label>
-    	<div class="col-lg-10">
-      		<div class="input-group">
-			  <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>						  
-			  <input name="password" type="text" class="form-control" value="<%= password %>"/>			  
-			</div>      		
-    	</div>
-  	</div>
-  	
-  	<div class="form-group">
-    	<div class="col-lg-offset-2 col-lg-10">
-    		<a href="#" class="btn btn-primary btn-lg save">Save</a>
-            <a href="#" class="btn btn-danger btn-lg delete">Delete</a>      		
-    	</div>
-  	</div>
-  	
-</form>
-
-<div class="row status-bar">
-    <div class="span12">
-        <div class="alert alert-success" style="display: none">
-            <b>Success!</b> Wine saved successfully
-        </div>
-    </div>
+<div class="col-xs-2">
+	
+	<img id="pictureFile" width="128" height="128" style="margin-left:17px;margin-bottom:10px" 
+		src="<%= picture === '-1' ? './resources/img/user_account.png' : 'rest/accounts/picture/' + picture %>"/>
+	
+	<!-- form role="form" action="rest/accounts/upload" method="post" enctype="multipart/form-data"-->
+	<!-- form role="form" enctype="multipart/form-data" id="fileuploadForm"-->	
+															
+	<span class="file-input btn btn-block btn-primary btn-file">
+		Chose your image&hellip; <input id="fileInput" type="file" name="fileInput">
+	</span>					
+	<!-- input id="filenameInput" type="text" class="form-control" readonly>	
+									
+	<!-- /form-->	
+	
+	<span id="filename" class="label label-default">
+			file name selected
+	</span>
+	
+	<h4>
+		<span class="label label-info">
+			Picture Loaded
+		</span>
+		<span class="label <%= picture === null ? 'label-danger' : 'label-success'%>" style="margin-left: 10px">
+			<span class="glyphicon <%= picture === null ? 'glyphicon-remove' : 'glyphicon-ok'%>"></span>
+		</span>	
+	</h4>
+	
 </div>
 
+<div class="col-xs-10">
+	<form class="form-horizontal">
+	
+		<div class="form-group">
+	    	<label for="id" class="col-lg-2 control-label">ID</label>
+	    	<div class="col-lg-10">
+	      		<div class="input-group">
+				  <span class="input-group-addon">#</span>						  
+				  <input id="accountId" name="id" type="text" class="form-control" value="<%= id === null ? '' : id %>" disabled/>			  
+				</div>      		
+	    	</div>
+	  	</div>
+	  	
+	  	<!-- NAME -->
+	  	<div id="formGroupname" class="form-group">
+	    	<label for="name" class="col-lg-2 control-label">Name</label>
+	    	<div class="col-lg-10">
+	    		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
+				  <input id="name" name="name" type="text" class="form-control" value="<%= name %>">			  
+				</div> 
+				<span id="msgname" class="help-block"></span>     							  			  
+	    	</div>
+	  	</div>
+	  	
+	  	<!-- USERNAME -->
+	  	<div id="formGroupusername" class="form-group">
+	    	<label for="username" class="col-lg-2 control-label">Username</label>
+	    	<div class="col-lg-10">
+	      		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
+				  <input id="username" name="username" type="text" class="form-control" value="<%= username %>"/>			  
+				</div>
+				<span id="msgusername" class="help-block"></span>      		
+	    	</div>
+	  	</div>
+	  	
+	  	<!-- PASSWORD -->
+	  	<div id="formGrouppassword" class="form-group">
+	    	<label for="password" class="col-lg-2 control-label">Password</label>
+	    	<div class="col-lg-10">
+	      		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>						  
+				  <input id="password" name="password" type="text" class="form-control" value="<%= password %>"/>			  
+				</div>      		
+				<span id="msgpassword" class="help-block"></span>
+	    	</div>
+	  	</div>
+	  	
+	  	<div class="form-group">
+	    	<div class="col-lg-offset-2 col-lg-10">
+	    		<button id="saveAccountButton" type="button" class="btn btn btn-default btn-lg save">Save</button>
+	    		<button id="deleteAccountButton" type="button" class="btn btn-warning btn-lg deleteConfirm">Delete</button>    		      	
+	    	</div>
+	  	</div>
+	  	
+	</form>
+		
+</div>
 
+</div>
 
+<!-- MODAL DELETE ACCOUNT -->
+ <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header modal-header-warning">
+             	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                 
+                 <h1><i class="glyphicon glyphicon-thumbs-up"></i> Delete Account <strong><%= name %></strong></h1>
+             </div>
+             <div class="modal-body">
+             	<p>Are you sure to delete the selected account <strong><%= name %> </strong> ?</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-warning delete">Confirm</button>
+                 <!-- a href="#" class="btn btn-warning delete" data-dismiss="modal">Confirm</a-->
+             </div>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
