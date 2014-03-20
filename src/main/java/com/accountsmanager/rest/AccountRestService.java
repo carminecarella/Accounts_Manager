@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
-
-import javassist.bytecode.ConstantAttribute;
-
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,15 +19,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
-
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-
 import com.accountsmanager.api.IAccount;
 import com.accountsmanager.model.Account;
 import com.accountsmanager.utils.Consts;
+
+/**
+ * RestFul services class.
+ * 
+ * @author Carella Carmine
+ * 
+ */
 
 @Path("/accounts")
 public class AccountRestService implements IAccount{

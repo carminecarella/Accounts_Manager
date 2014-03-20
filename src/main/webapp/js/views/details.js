@@ -11,12 +11,10 @@ window.DetailsView = Backbone.View.extend({
 
     events: {
         "change"        : "change",
-        //"keyup"         : "change",
         "click .save"   : "beforeSave",
         "click .deleteConfirm" : "deleteAccountConfirmation",
         "click .delete" : "deleteAccount",        
-        "change .btn-file"     : "uploadImage",        
-        //"drop #picture" : "dropHandler"        	
+        "change .btn-file"     : "uploadImage",                        	
     },
 
     change: function (event) {
@@ -67,17 +65,7 @@ window.DetailsView = Backbone.View.extend({
 			
 		this.saveAccount();		
         $('#loadingimage').hide();
-		
-        // Upload picture file if a new file was dropped in the drop area
-        /*if (this.pictureFile) {
-            this.model.set("picture", this.pictureFile.name);
-            utils.uploadFile(this.pictureFile,
-                function () {
-                    self.saveWine();
-                }
-            );
-        } else {                        
-        }*/        
+		      
     },
     
     saveAccount: function () {
@@ -193,21 +181,5 @@ window.DetailsView = Backbone.View.extend({
     		return false;    		
     	}   	
     }
-    
-    /*dropHandler: function (event) {
-	    event.stopPropagation();
-	    event.preventDefault();
-	    var e = event.originalEvent;
-	    e.dataTransfer.dropEffect = 'copy';
-	    
-	    this.pictureFile = e.dataTransfer.files[0];
-	
-	    //Read the image file from the local file system and display it in the img tag
-	    var reader = new FileReader();
-	    reader.onloadend = function () {
-	        $('#picture').attr('src', reader.result);
-	    };
-	    reader.readAsDataURL(this.pictureFile);
-	},*/
         	    
 });

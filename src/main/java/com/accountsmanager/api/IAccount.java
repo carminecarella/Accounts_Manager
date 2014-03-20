@@ -1,12 +1,7 @@
 package com.accountsmanager.api;
 
 import java.util.List;
-
 import javax.ejb.Local;
-import javax.ws.rs.core.Response;
-
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-
 import com.accountsmanager.model.Account;
 
 /**
@@ -32,6 +27,4 @@ public interface IAccount {
 	
 	Integer getAccountNumber();
 	
-	//Response uploadFile(MultipartFormDataInput input);
-
 }

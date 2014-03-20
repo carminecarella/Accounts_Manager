@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Account Details</h1>
+  <h1>Account Details <small><%= name %></small></h1>
   
   <!-- ALERT FOR MESSAGING -->
   <div class="alert alert-success" style="display: none">  		
@@ -9,16 +9,11 @@
 
 <div class="row">
 
-<div class="col-xs-12">
-						
-	<!-- input id="filenameInput" type="text" class="form-control" readonly>	
-	
-	<!-- form role="form" action="rest/accounts/upload" method="post" enctype="multipart/form-data"-->
-	<!-- form role="form" enctype="multipart/form-data" id="fileuploadForm"-->
-	<!-- /form-->
-	
+<div class="col-xs-12">	
 	<div class="blockquote-box clearfix">
+		
         <div class="square pull-left">
+        	
             <img id="pictureFile" width="128" height="128" 
 					src="<%= picture === '-1' ? './resources/img/user_account.png' : 'rest/accounts/picture/' + picture %>"/>
 			<span class="file-input btn btn-block btn-primary btn-file" style="margin-top:5px;">
@@ -37,8 +32,7 @@
 			<span class="label <%= picture == '-1' ? 'label-danger' : 'label-success'%>" style="margin-left: 10px">
 				<span class="glyphicon <%= picture == '-1' ? 'glyphicon-remove' : 'glyphicon-ok'%>"></span>
 			</span>	
-		</h4> 
-		               
+		</h4> 		               
     </div>
 		
 </div>

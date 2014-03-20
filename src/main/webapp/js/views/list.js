@@ -10,7 +10,6 @@ window.ListView = Backbone.View.extend({
         var startPos = (this.options.page - 1) * 8;
         var endPos = Math.min(startPos + 8, len);
 
-        //$(this.el).html('<div class="row"><div class="span12"><h2>Shop List</h2><ul class="thumbnails"></ul></div></div>');
         $(this.el).html(this.template());
 
         for (var i = startPos; i < endPos; i++) {
@@ -24,11 +23,8 @@ window.ListView = Backbone.View.extend({
 });
 
 window.ListItemView = Backbone.View.extend({
-
-    /*tagName: "li",
-    className: "span3",*/
-
-    initialize: function () {
+    
+	initialize: function () {
         this.model.bind("change", this.render, this);
         this.model.bind("destroy", this.close, this);
     },

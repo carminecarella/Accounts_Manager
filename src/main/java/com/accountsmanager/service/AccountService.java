@@ -121,6 +121,6 @@ public class AccountService extends BaseService implements IAccount {
 		GregorianCalendar gc = new GregorianCalendar();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return gc.getTime();
-		//System.out.println(sdf.format(gc.getTime())); 
 	}
+	
 }

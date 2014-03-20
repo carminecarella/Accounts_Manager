@@ -4,6 +4,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * Entity manager class.
+ * 
+ * @author Carella Carmine
+ * 
+ */
+
 @Stateless
 public class BaseService {
 	
