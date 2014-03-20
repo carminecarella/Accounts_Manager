@@ -56,8 +56,7 @@ public class AccountRestService implements IAccount{
 	@GET 
 	@Path("{id}")
 	@Produces("application/json")
-	public Account getAccount(@PathParam("id") String id) {
-		System.out.println("findById " + id);		
+	public Account getAccount(@PathParam("id") String id) {				
 		return iAccount.getAccount(id);						
 	}
 	
@@ -107,14 +106,13 @@ public class AccountRestService implements IAccount{
 	}
 	
 	@POST
-	@Path("/upload/{id}")	
+	@Path("/upload/{filename}")	
 	@Consumes("multipart/form-data")
-	public Response uploadFile(	@PathParam("id") String id, 
+	public Response uploadFile(	@PathParam("filename") String filename, 
 								MultipartFormDataInput input) {
  
 		String file = "";
-		String newFileName = "";
- 
+		
 		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
 		List<InputPart> inputParts = uploadForm.get("file");
  
@@ -124,16 +122,14 @@ public class AccountRestService implements IAccount{
  
 			MultivaluedMap<String, String> header = inputPart.getHeaders();
 			
-			String ext = FilenameUtils.getExtension(getFileName(header));
-			
-			newFileName = "pictureId" + id + "." + ext;
- 
+			//String ext = FilenameUtils.getExtension(getFileName(header));
+		
 			//convert the uploaded file to inputstream
 			InputStream inputStream = inputPart.getBody(InputStream.class,null);
  
 			byte [] bytes = IOUtils.toByteArray(inputStream);
  			
-			file = Consts.BASE_PATH_FILE + File.separator + newFileName;
+			file = Consts.BASE_PATH_FILE + File.separator + filename;
  
 			writeFile(bytes,file);
   

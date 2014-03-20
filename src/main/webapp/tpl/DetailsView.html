@@ -5,42 +5,49 @@
   <div class="alert alert-success" style="display: none">  		
   		<b>Success!</b>
   </div>
-  
 </div>
 
 <div class="row">
 
-<div class="col-xs-2">
-	
-	<img id="pictureFile" width="128" height="128" style="margin-left:17px;margin-bottom:10px" 
-		src="<%= picture === '-1' ? './resources/img/user_account.png' : 'rest/accounts/picture/' + picture %>"/>
+<div class="col-xs-12">
+						
+	<!-- input id="filenameInput" type="text" class="form-control" readonly>	
 	
 	<!-- form role="form" action="rest/accounts/upload" method="post" enctype="multipart/form-data"-->
-	<!-- form role="form" enctype="multipart/form-data" id="fileuploadForm"-->	
-															
-	<span class="file-input btn btn-block btn-primary btn-file">
-		Chose your image&hellip; <input id="fileInput" type="file" name="fileInput">
-	</span>					
-	<!-- input id="filenameInput" type="text" class="form-control" readonly>	
-									
-	<!-- /form-->	
+	<!-- form role="form" enctype="multipart/form-data" id="fileuploadForm"-->
+	<!-- /form-->
 	
-	<span id="filename" class="label label-default">
-			file name selected
-	</span>
-	
-	<h4>
-		<span class="label label-info">
-			Picture Loaded
+	<div class="blockquote-box clearfix">
+        <div class="square pull-left">
+            <img id="pictureFile" width="128" height="128" 
+					src="<%= picture === '-1' ? './resources/img/user_account.png' : 'rest/accounts/picture/' + picture %>"/>
+			<span class="file-input btn btn-block btn-primary btn-file" style="margin-top:5px;">
+				change picture&hellip; <input id="fileInput" type="file" name="fileInput">
+			</span>		
+        </div>
+        
+        <span id="filename" class="label label-default">
+			no file selected
 		</span>
-		<span class="label <%= picture === null ? 'label-danger' : 'label-success'%>" style="margin-left: 10px">
-			<span class="glyphicon <%= picture === null ? 'glyphicon-remove' : 'glyphicon-ok'%>"></span>
-		</span>	
-	</h4>
+		
+		<h4>
+			<span class="label label-info">
+				Picture already Loaded
+			</span>
+			<span class="label <%= picture == '-1' ? 'label-danger' : 'label-success'%>" style="margin-left: 10px">
+				<span class="glyphicon <%= picture == '-1' ? 'glyphicon-remove' : 'glyphicon-ok'%>"></span>
+			</span>	
+		</h4> 
+		               
+    </div>
+		
+</div>
 	
 </div>
 
-<div class="col-xs-10">
+<div class="row">
+
+<div class="col-xs-12">
 	<form class="form-horizontal">
 	
 		<div class="form-group">
@@ -49,7 +56,7 @@
 	      		<div class="input-group">
 				  <span class="input-group-addon">#</span>						  
 				  <input id="accountId" name="id" type="text" class="form-control" value="<%= id === null ? '' : id %>" disabled/>			  
-				</div>      		
+				</div>				      		
 	    	</div>
 	  	</div>
 	  	
@@ -86,6 +93,13 @@
 				  <input id="password" name="password" type="text" class="form-control" value="<%= password %>"/>			  
 				</div>      		
 				<span id="msgpassword" class="help-block"></span>
+	    	</div>
+	  	</div>
+	  	
+	  	<div class="form-group">
+	    	<label for="password" class="col-lg-2 control-label">Last Update</label>
+	    	<div class="col-lg-10">
+	    		<h4><span id="lastUpdate" class="label label-primary">unknown</span></h4>  		
 	    	</div>
 	  	</div>
 	  	

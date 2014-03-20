@@ -60,7 +60,7 @@ window.SearchResultView = Backbone.View.extend({
 	        	$(this.el).append(new SearchResultItemView({model:account}).render().el);        	
 	        }, this);
         } else {
-        	$(this.el).append('<li class="elementSearchResult disabled"><a href="#"><div class="row"><div class="col-md-6"><img src="./resources/img/no_result.png" alt=""></div><div class="col-md-6" style="padding-top:5px">No result</div></div></a></li>');
+        	$(this.el).append('<li class="elementSearchResult disabled"><a href="#"><div class="row"><div class="col-xs-4"><img src="./resources/img/no_result.png" alt=""></div><div class="col-xs-8" style="padding-top:5px">No result</div></div></a></li>');
         } 
         	
         return this;

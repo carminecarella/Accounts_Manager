@@ -47,10 +47,12 @@ window.Router = Backbone.Router.extend({
     
     accountDetails: function (id) {
         var account = new Account({id: id});
-        account.fetch({success: function(){
+        account.fetch({success: function(){        	
             $("#content").html(new DetailsView({model: account}).el);
-        }});        
-//        this.headerView.selectMenuItem();
+            $('#lastUpdate').text(convertDate(account.get('modifyDate')));            
+        }});
+        
+        //this.headerView.selectMenuItem();
     },
     
     addAccount: function() {

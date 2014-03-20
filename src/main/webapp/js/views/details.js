@@ -1,11 +1,11 @@
 window.DetailsView = Backbone.View.extend({
 
     initialize: function () {
-        this.render();   
+        this.render();        
     },
 
     render: function () {
-        $(this.el).html(this.template(this.model.toJSON()));        
+        $(this.el).html(this.template(this.model.toJSON()));                
         return this;
     },
 
@@ -28,7 +28,7 @@ window.DetailsView = Backbone.View.extend({
         var target = event.target;
         var change = {};
         
-        //not save input file modification in the model
+        // Not save input file (upload) changes in the model
         if(target.name != 'fileInput'){
         	change[target.name] = target.value;
         	this.model.set(change);
@@ -44,7 +44,7 @@ window.DetailsView = Backbone.View.extend({
         }
         
         //Check picture file                            		
-		this.checkFile();
+		//this.checkFileAndExtension();
     },
 
     beforeSave: function () {
@@ -60,17 +60,12 @@ window.DetailsView = Backbone.View.extend({
         }
         
         //Check picture file                            		
-		if(this.checkFile() == false) {			
-			if(this.model.get('picture') == '-1') {
-				this.model.set("picture", "-1");
-			}
-			$('#loadingimage').hide();
-            return false;
+		if(this.checkFileAndExtension()) {			
+			this.model.set("picture", utils.createFileName(this.model.id));
+			this.saveFile();
 		} 
-				
-		this.model.set("picture", utils.getFileName(this.model.id));
-		this.saveAccount();
-		this.saveFile();
+			
+		this.saveAccount();		
         $('#loadingimage').hide();
 		
         // Upload picture file if a new file was dropped in the drop area
@@ -91,6 +86,7 @@ window.DetailsView = Backbone.View.extend({
             success: function (model) {
                 self.render();                
                 $('#loadingModal').modal('hide');
+                $('#lastUpdate').text(convertDate(model.get('modifyDate')));
                 app.navigate('accounts/' + model.id, false);                
                 utils.showAlert('Success!', 'Account saved successfully', 'alert-success');
             },
@@ -129,8 +125,8 @@ window.DetailsView = Backbone.View.extend({
 			//$('#filenameInput').val(label);
 			$('#filename').text(label);
 						
-			//check file			 	        
-			if(this.checkFile()){
+			//check file if selected and extension is valid			 	        
+			if(this.checkFileAndExtension()){
 				var reader = new FileReader();
 		        reader.onloadend = function () {
 		            $('#pictureFile').attr('src', reader.result);
@@ -157,7 +153,7 @@ window.DetailsView = Backbone.View.extend({
     	data.append('file', utils.getFile());
 		
 		$.ajax({
-		    url: 'rest/accounts/upload/' + this.model.id,
+		    url: 'rest/accounts/upload/' + this.model.get('picture'),
 		    data: data,
 		    cache: false,
 		    contentType: false,
@@ -177,18 +173,25 @@ window.DetailsView = Backbone.View.extend({
 		});
     },
     
-    checkFile: function() {
-    	if(utils.checkFileExt()){    		
-	        $('#saveAccountButton').prop('disabled', false);
-    	    $('#deleteAccountButton').prop('disabled', false);
-    	    return true;
-		} else {
-			utils.showAlert('Error', 'Only image files are allowed ( .jpg, .jpeg, .png )', 'alert-danger');
-			$('#saveAccountButton').prop('disabled', true);
-			$('#deleteAccountButton').prop('disabled', true);			
-    	    $('#loadingModal').modal('hide');
-    	    return false;
-		}
+    checkFileAndExtension: function() {
+    	// File selected
+    	if(utils.checkFile()){
+    		// Ext is valid
+    		if(utils.checkFileExt()){
+    			//$('#saveAccountButton').prop('disabled', false);
+        	    //$('#deleteAccountButton').prop('disabled', false);
+        	    return true;
+    		} else {
+    			utils.showAlert('Error', 'Only image files are allowed ( .jpg, .jpeg, .png )', 'alert-danger');
+    			//$('#saveAccountButton').prop('disabled', true);
+    			//$('#deleteAccountButton').prop('disabled', true);
+    			this.model.set("picture", "-1");
+        	    $('#loadingModal').modal('hide');
+        	    return false;
+    		}
+    	}  else {
+    		return false;    		
+    	}   	
     }
     
     /*dropHandler: function (event) {

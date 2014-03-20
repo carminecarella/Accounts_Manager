@@ -68,23 +68,14 @@ window.utils = {
 	},
 		
 	/*Utility method for image uploading*/
-	checkFile: function() {
-    	var files = $('input[name="fileInput"]')[0].files;
-    	if(files.length > 0){
-    		return true;
-    	} else {
-    		return false;
-    	}    	
-    },
-    
     getFile: function() {
     	var files = $('input[name="fileInput"]')[0].files;    	
     	return files[0];
     },
     
-    getFileName: function(id) {    	
-    	$.now();
-    	return 'pictureId' + id + '.' + this.getFileExt();
+    createFileName: function() {    	
+    	var filename = 'pictureId' + $.now() + '.' + this.getFileExt();    	
+    	return filename;
     	//return $('#filenameInput').text();
     },
     
@@ -98,6 +89,15 @@ window.utils = {
     	return ext;
     },
     
+    checkFile: function() {
+    	var files = $('input[name="fileInput"]')[0].files;
+    	if(files.length > 0){
+    		return true;
+    	} else {
+    		return false;
+    	}    	
+    },
+    
     checkFileExt: function() {
     	var ext = this.getFileExt();        
     	if(ext != null){    		
@@ -107,7 +107,7 @@ window.utils = {
 				return false;
 			}
     	} else {
-    		return true;
+    		return false;
     	}
     }
 

@@ -44,7 +44,8 @@ window.Account = Backbone.Model.extend({
         name: "",
         username: "",
         password: "",
-        picture: "-1"
+        picture: "-1",
+        modifyDate: ""	
     }
     
 });
