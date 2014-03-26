@@ -1,7 +1,7 @@
-Accounts Manager
+Account Manager
 ================
 
-Accounts Manager: sample application to manage Internet accounts (username, password, etc.) like facebook, twitter and other internet services ( N.B. this is a sample app to try new technologies, for this reason security topics like password hashing, etc. are not considered )
+Account Manager: sample application to manage Internet accounts (username, password, etc.) like facebook, twitter and other internet services ( N.B. this is a sample app to try new technologies, for this reason security topics like password hashing, etc. are not considered )
 
 It is a sample CRUD web application built up with Twitter Bootstrap, Backbone JS, REST services and J2EE backend.
 
